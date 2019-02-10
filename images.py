@@ -1,6 +1,4 @@
-from torchvision import transforms
-
-
+from torchvision import datasets, transforms
 
 imagenetMeans = [0.485, 0.456, 0.406]
 imagenetStdDeviations = [0.229, 0.224, 0.225]
@@ -21,12 +19,6 @@ transformations = {
                                 transforms.Normalize(imagenetMeans, imagenetStdDeviations)])
 }
 
-datasets = {
-    'training': datasets.ImageFolder(train_dir, transform=transformations['training']),
-    'validation' = datasets.ImageFolder(valid_dir, transform=transformations['validation']),
-    'testing' = datasets.ImageFolder(test_dir, transform=transformations['testing'])
-}
-
 def get_transformation(type):
     return transformations[type]
 
@@ -35,9 +27,9 @@ def get_dataset(data_dir, type):
         dir = data_dir + '/train'
     elif(type == 'validation'):
         dir = data_dir + '/valid'
-    elif(type=='test'):
+    elif(type == 'test'):
         dir = data_dir + '/test'
-    else
+    else:
         raise Exception("Invalid Dataset type. Please specify training, validation or test")
 
     return datasets.ImageFolder(dir, transform=get_transformation(type))

@@ -1,6 +1,7 @@
-from torch import nn
+from torch import nn, optim
 from torchvision import models
 from collections import OrderedDict
+
 
 # List of neural network architectures supported
 architectures ={
@@ -59,3 +60,15 @@ def create_transfer_learning_model(architecture='vgg16', hidden_layer_units=500,
     # Update classifier of the model with our own neural network
     model.classifier = create_classifier_to_train(architecture, hidden_layer_units, categories_to_classify)
     return model
+
+def neural_network_setup(architecture, hidden_layer_units=500, learning_rate=0.01, categories_to_classify=102):
+    model = create_transfer_learning_model(architecture, hidden_layer_units, categories_to_classify)
+    criterion = nn.NLLLoss()
+    optimizer = optim.Adam(model.classifier.parameters(), lr=learning_rate)
+
+    return {
+        'architecture': architecture,
+        'model': model,
+        'criterion': criterion,
+        'optimizer': optimizer
+    }
