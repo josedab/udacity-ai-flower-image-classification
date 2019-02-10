@@ -26,7 +26,7 @@ def get_input_args_prediction():
 
     parser.add_argument('--input', type = str,
                         help = 'Image to classify')
-    parser.add_argument('--checkpoint', type = str,
+    parser.add_argument('--checkpoint', type = str, default='./checkpoint.pth',
                         help = 'Model to used when predicting the category image')
 
     # Optional

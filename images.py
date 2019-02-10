@@ -33,3 +33,17 @@ def get_dataset(data_dir, type):
         raise Exception("Invalid Dataset type. Please specify training, validation or test")
 
     return datasets.ImageFolder(dir, transform=get_transformation(type))
+
+
+def process_image(image):
+    ''' Scales, crops, and normalizes a PIL image for a PyTorch model,
+        returns an Numpy array
+    '''
+    image_pil = Image.open(image)
+    pre_processing_transforms = transforms.Compose([
+        transforms.Resize(256),
+        transforms.CenterCrop(224),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=imagenetMeans, std=imagenetStdDeviations)])
+
+    return pre_processing_transforms(image_pil).numpy()
