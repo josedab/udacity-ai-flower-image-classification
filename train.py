@@ -31,7 +31,6 @@ def main():
     learning_rate = arguments.learning_rate
     flower_categories_cardinality = 102
     epochs = arguments.epochs
-    print(arguments.arch)
 
     print("- Creating transfer learning model")
     neural_network = neural_network_setup(architecture, hidden_layer_units, learning_rate,
