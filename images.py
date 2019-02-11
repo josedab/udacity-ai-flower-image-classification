@@ -1,4 +1,6 @@
+import torch
 from torchvision import datasets, transforms
+from PIL import Image
 
 imagenetMeans = [0.485, 0.456, 0.406]
 imagenetStdDeviations = [0.229, 0.224, 0.225]
@@ -34,6 +36,9 @@ def get_dataset(data_dir, type):
 
     return datasets.ImageFolder(dir, transform=get_transformation(type))
 
+def get_dataloader(data_dir, type, batch_size=32, shuffle=True):
+    dataset = get_dataset(data_dir, type)
+    return torch.utils.data.DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
 
 def process_image(image):
     ''' Scales, crops, and normalizes a PIL image for a PyTorch model,

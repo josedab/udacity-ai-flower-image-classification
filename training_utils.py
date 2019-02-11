@@ -1,12 +1,10 @@
 import torch
-from torch import nn
-from torch import optim
+
 
 def training_validation(model, dataloader, criterion, device):
     test_loss = 0
     accuracy = 0
     for inputs, labels in dataloader:
-
         inputs, labels = inputs.to(device), labels.to(device)
         output = model.forward(inputs)
         test_loss += criterion(output, labels).item()
@@ -17,8 +15,8 @@ def training_validation(model, dataloader, criterion, device):
 
     return test_loss, accuracy
 
-def train_model(training_set, validation_set, model, optimizer, criterion, epochs = 5, print_every = 5, device='cuda'):
 
+def train_model(training_set, validation_set, model, optimizer, criterion, epochs=5, print_every=5, device='cuda'):
     model.to(device)
 
     steps = 0
@@ -47,10 +45,10 @@ def train_model(training_set, validation_set, model, optimizer, criterion, epoch
                 with torch.no_grad():
                     validation_loss, validation_accuracy = training_validation(model, validation_set, criterion, device)
 
-                print("Epoch: {}/{}--- ".format(e+1, epochs),
-                      "Training Loss: {:.4f}  ".format(running_loss/print_every),
-                      "Validation Loss: {:.4f}  ".format(validation_loss/len(validation_set)),
-                      "Validation Accuracy: {:.4f}  ".format(validation_accuracy/len(validation_set)))
+                print("Epoch: {}/{}--- ".format(e + 1, epochs),
+                      "Training Loss: {:.4f}  ".format(running_loss / print_every),
+                      "Validation Loss: {:.4f}  ".format(validation_loss / len(validation_set)),
+                      "Validation Accuracy: {:.4f}  ".format(validation_accuracy / len(validation_set)))
 
                 running_loss = 0
 

@@ -3,7 +3,7 @@ import argparse
 def get_input_args_training():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_dir', type = str, default = 'flowers',
-                        help = 'Set directory to save checkpoints')
+                        help = 'Set directory to load the data')
 
     parser.add_argument('--arch', type = str, default = 'vgg16',
                         help = 'Neural Network Model architecture to be used')
