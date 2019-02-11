@@ -13,7 +13,7 @@ def save_model(file_path, architecture, model, hidden_layer_units):
     torch.save(snapshot, file_path)
 
 def load_model(file_path):
-    snapshot = torch.load(file_path)
+    snapshot = torch.load(file_path, map_location=lambda storage, loc: storage)
     model = create_transfer_learning_model(snapshot['architecture'],
                                            snapshot['hidden_layer_units'],
                                            categories_to_classify)
