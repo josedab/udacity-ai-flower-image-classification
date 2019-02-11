@@ -17,6 +17,8 @@ def get_input_args_training():
                         help = 'Learning rate hyperparameter')
     parser.add_argument('--hidden_units', type = int , default = 512,
                         help = 'Hidden units hyperparameter')
+    parser.add_argument('--epochs', type=int, default=5,
+                        help='Epochs done during training')
     return parser.parse_args()
 
 

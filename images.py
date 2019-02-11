@@ -36,8 +36,7 @@ def get_dataset(data_dir, type):
 
     return datasets.ImageFolder(dir, transform=get_transformation(type))
 
-def get_dataloader(data_dir, type, batch_size=32, shuffle=True):
-    dataset = get_dataset(data_dir, type)
+def get_dataloader(dataset, batch_size=32, shuffle=True):
     return torch.utils.data.DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
 
 def process_image(image):

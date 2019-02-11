@@ -35,8 +35,8 @@ def print_prediction_results(labels, probabilities, topk=5):
     print("Prediction results")
     print("==================================")
 
-    for label, probability in zip(labels, probabilities)[:topk]:
-        print("Class: {}, Probability: {:.4f}%".format(label, probability))
+    for label, probability in list(zip(labels, probabilities))[:topk]:
+        print("Class: {}, Probability: {:.4f}".format(label, probability))
 
 
 if __name__ == "__main__":

@@ -45,7 +45,7 @@ def train_model(training_set, validation_set, model, optimizer, criterion, epoch
                 with torch.no_grad():
                     validation_loss, validation_accuracy = training_validation(model, validation_set, criterion, device)
 
-                print("Epoch: {}/{}--- ".format(e + 1, epochs),
+                print("Epoch: {}/{} --- ".format(e + 1, epochs),
                       "Training Loss: {:.4f}  ".format(running_loss / print_every),
                       "Validation Loss: {:.4f}  ".format(validation_loss / len(validation_set)),
                       "Validation Accuracy: {:.4f}  ".format(validation_accuracy / len(validation_set)))
