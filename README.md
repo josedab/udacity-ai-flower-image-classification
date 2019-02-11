@@ -4,10 +4,17 @@
 The Flower classifier project is part of the `AI Programming with Python` Nanodegree program.
 It consists on applying Transfer learning over a known architecture (such as VGG or Densenet) in order to classify flower images.
 
+This repository consists on a two part project:
+- Jupyter notebook showcasing the training of a neural network in order to classify flower images.
+- Transfer of the jupyter experiment code to a set of python scripts that will let us train a neural network and predict given an image, what kind of flower category it is.
+
 ## Dependencies
 To install these dependencies with pip, you can issue `pip install -r requirements.txt`.
 
-## Usage
+## Part 1: Jupyter notebook
+You can find the Jupyter notebook experiment on the file `ImageClassifierProject.ipynb`.
+
+## Part 2: Python scripts usage
 
 ### Training
 Example of use:
